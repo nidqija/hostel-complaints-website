@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
-
+from flask_login import LoginManager
 
 
 
@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 migrate = Migrate(app , db)
 app.app_context().push()
-
+login_manager = LoginManager(app)
 
 
 
