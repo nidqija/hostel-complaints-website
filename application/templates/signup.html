@@ -23,11 +23,12 @@
         <div class="hero-body">
             
           <div class="container p-6 has-background-dark" style="background-color: white; border-radius: 20px;">
-            <form action="" method="post">
+            <form action="" method="POST">
+              {{ form.hidden_tag() }}
            
 
               <div class="container">
-                <h1 class="is-size-3 mb-5 has-text-white" style="font-family: Ubuntu;">Login</h1>
+                <h1 class="is-size-3 mb-5 has-text-white" style="font-family: Ubuntu;">Sign Up</h1>
   
              
                   <div class="alert alert-danger">
@@ -36,38 +37,70 @@
              
   
                   <div class="field">
-                       {{ form.username.label(class="label") }}
-                       {{ form.username(class="form-control", placeholder="JohnDoe") }}
-                       {% for error in form.username.errors %}
-                           <span style="color: red;">{{ error }}</span>
-                       {% endfor %}
+                    {{form.username.label(class="label has-text-white")}}
+
+                    {% if form.username.errors %}       
+                        {{form.username(class="form-control form-control-lg is-invalid")}}
+                        <div>
+                            {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{form.username(class="control input" , placeholder='exp : John Doe')}}
+                    {% endif %}
                   </div>
 
                   <div class="field">
-                    {{ form.email.label(class="label") }}
-                       {{ form.email(class="form-control", placeholder="JohnDoe") }}
-                       {% for error in form.email.errors %}
-                           <span style="color: red;">{{ error }}</span>
-                       {% endfor %}
+                    {{form.email.label(class="label has-text-white")}}
+
+                    {% if form.email.errors %}       
+                        {{form.email(class="form-control form-control-lg is-invalid")}}
+                        <div>
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{form.email(class="control input" ,  placeholder='exp : johndoe@gmail.com')}}
+                    {% endif %}
 
                   </div>
 
 
                    <div class="field">
-                   {{ form.password.label(class="label") }}
-                       {{ form.password(class="form-control", placeholder="JohnDoe") }}
-                       {% for error in form.password.errors %}
-                           <span style="color: red;">{{ error }}</span>
-                       {% endfor %}
+                    {{form.password.label(class="label has-text-white")}}
+
+                    {% if form.password.errors %}       
+                        {{form.password(class="form-control form-control-lg is-invalid")}}
+                        <div>
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{form.password(class="control input" ,  placeholder='exp : johndoe123')}}
+                    {% endif %}
 
                   </div>
 
                      <div class="field">
-                    {{ form.confirmpassword.label(class="label") }}
-                       {{ form.confirmpassword(class="form-control", placeholder="JohnDoe") }}
-                       {% for error in form.confirmpassword.errors %}
-                           <span style="color: red;">{{ error }}</span>
-                       {% endfor %}
+                      {{form.confirmpassword.label(class="label has-text-white")}}
+
+                      {% if form.confirmpassword.errors %}       
+                          {{form.confirmpassword(class="control control-lg is-invalid")}}
+                          <div>
+                              {% for error in form.confirmpassword.errors %}
+                              <span>{{ error }}</span>
+                              {% endfor %}
+                          </div>
+
+                      {% else %}
+                          {{form.confirmpassword(class="control input" , placeholder='exp : johndoe123')}}
+                      {% endif %}
 
                      </div>
 
@@ -86,10 +119,11 @@
                   
         
             </div>
-          {% endblock content %}
+          
           </form>
           </div>
         </div>
+        {% endblock content %}
       </section>
 
     
