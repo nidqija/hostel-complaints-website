@@ -20,5 +20,11 @@ class User(db.Model , UserMixin ):
         
         def _repr_(self):
            return f'User("{self.username}" , {self.email})'
+
+
+class Facilities(db.Model , UserMixin):
+       id = db.Column(db.Integer , primary_key = True)
+       
+
         
 

@@ -73,9 +73,18 @@
               </div>
             </div>
           </div>
+
+
       
           <div class="navbar-end">
             <div class="navbar-item">
+              {% if current_user.is_authenticated %}
+                 <div class="buttons">
+                  <a class="button is-dark">{{ current_user.username }}</a>
+                 </div>
+
+                 {% else %}
+
               <div class="buttons">
                 <a class="button is-dark" style="font-family: Ubuntu;" >
                   <strong>Sign up</strong>
@@ -84,6 +93,7 @@
                   Log in
                 </a>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -94,7 +104,8 @@
     <div class="p-5">
       <div class="container">
         <div class="p-5">
-          <h1 class="has-text-white" style="font-family: 'Kaisei Tokumin'; font-size: 48px;"> <a href="">welcome </a>Welcome to Complaintments Official Website</h1>
+          <h1 class="has-text-white" style="font-family: 'Kaisei Tokumin'; font-size: 48px;">
+          </a>Welcome to Complaintments Official Website</h1>
           <h5 class="has-text-white mt-5" style="font-family: 'Kaisei Tokumin';font-size: 20px;">"The SCC official website: your gateway to updates, resources, and services. Stay informed and connected."</h5>
         </div>
       </div>
