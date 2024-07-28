@@ -47,5 +47,11 @@ def home():
     return render_template('home.html')
 
 
+@app.route('/facilitiesform' , methods = ['POST' , 'GET'])
+def facilitiesform():
+    return render_template('facilitiesform.html')
+    
+
+
 
 

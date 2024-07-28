@@ -15,7 +15,8 @@ class User(db.Model , UserMixin ):
         email = db.Column(db.String(120) , unique = True , nullable = False)
         password = db.Column(db.String(120) , nullable = False)
         createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
-       
+        facilities = db.relationship('Facilities' , backref = 'author' , lazy = True)
+        
 
         
         def _repr_(self):
@@ -24,7 +25,9 @@ class User(db.Model , UserMixin ):
 
 class Facilities(db.Model , UserMixin):
        id = db.Column(db.Integer , primary_key = True)
-       
+       message = db.Column(db.String(1000) , nullable = True)
+       createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
+       user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
 
         
 

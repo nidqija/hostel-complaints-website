@@ -43,32 +43,9 @@
 
     <div class="facilitiesformbackground has-background-black">
     <div class="container p-5">
-        {{if .Success}}
-        <div class="field" style="height: 600px;">
-        <h1 class="is-size-1 mt-5 has-text-success">Submitted!</h1>
-       </div>
-        {{else}}
-        <div class="field">
+               <div class="field">
             <form method="POST" action="/submit">
                 <h1 class="is-size-1 mt-5 has-text-dark">Facilities Form</h1>
-                <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Text input" name="username" required>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="email" placeholder="Email input" name="email" required>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                    </div>
-                </div>
                 <div class="field">
                     <label class="label">Message</label>
                     <div class="control">
@@ -86,7 +63,6 @@
             </form>
         </div>
     </div>
-        {{end}}
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
