@@ -6,6 +6,7 @@
     <title>Facilities Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
 </head>
 <body>
     <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
@@ -41,7 +42,7 @@
     </nav>
 
 
-    <div class="facilitiesformbackground has-background-black-bis" style="height: 50rem;">
+    <div class="facilitiesformbackground has-background-black-bis" style="height: 60rem;">
     <div class="container p-5">
                <div class="field">
             <form method="POST" action="">
@@ -49,28 +50,14 @@
 
                 <div>
                      <ol type="1" class="p-2">
-                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Students can submit their complaints using this form for following facilities: Bedroom, Bathroom, TV Room, Recreation Room, Prayer Room, Pantry, and Play Room. </li>
+                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Students can submit their complaints using this form for following facilities: <br> Bedroom, Bathroom, TV Room, Recreation Room, Prayer Room, Pantry, and Play Room. </li>
                         <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Please ensure that all complaints are explained clearly and avoid using any inappropriate language or cussing in your submissions.</li>
                         <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Please provide pictures to ensure the hostel department take heavy notes on your complaints.</li>
                      </ol>
                 </div>
                 
 
-                <div class="file has-name mb-5">
-    <div class="container">
-        <h1 class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
-  <label class="file-label">
-    <input class="file-input" type="file" name="resume" />
-    <span class="file-cta">
-      <span class="file-icon">
-        <i class="fas fa-upload"></i>
-      </span>
-      <span class="file-label"> Choose a file… </span>
-    </span>
-    <span class="file-name has-text-white"> Screen Shot 2017-07-29 at 15.54.25.png </span>
-  </label>
-  </div>
-</div>
+          
 
 <div>
     <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Room Type</h1>
@@ -87,13 +74,29 @@
                     <div class="control">
                         <textarea class="textarea" placeholder="Textarea" name="message" required></textarea>
                     </div>
+
+                          <div class="file has-name mb-5">
+    <div class="container mt-5 mb-5">
+        <h1 class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume" />
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label"> Choose a file… </span>
+    </span>
+    <span class="file-name has-text-white"> Screen Shot 2017-07-29 at 15.54.25.png </span>
+  </label>
+  </div>
+</div>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-dark" name="submit" type="submit">Submit</button>
+                        <button class="button is-dark" name="submit" type="submit" id="submit">Submit</button>
                     </div>
                     <div class="control">
-                        <button class="button is-link is-light" type="reset">Cancel</button>
+                        <button class="button is-link is-light" type="reset" id="cancel" >Cancel</button>
                     </div>
                 </div>
             </form>
@@ -102,5 +105,22 @@
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+          const intro = introJs();
+
+          intro.setOptions({
+            steps: [
+                    {
+                        element : "#cancel" ,
+                        intro : 'welcome to cancel button'
+
+                    }
+                   ]
+                  }) 
+
+           intro.start();
+    </script>
+    <script src="{{ url_for('static' , filename = 'js/index.js')}}"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@8.0.0-beta.1/intro.min.js"></script>
 </body>
 </html>
