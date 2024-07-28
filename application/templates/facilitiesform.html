@@ -41,20 +41,56 @@
     </nav>
 
 
-    <div class="facilitiesformbackground has-background-black">
+    <div class="facilitiesformbackground has-background-black-bis" style="height: 50rem;">
     <div class="container p-5">
                <div class="field">
-            <form method="POST" action="/submit">
-                <h1 class="is-size-1 mt-5 has-text-dark">Facilities Form</h1>
-                <div class="field">
-                    <label class="label">Message</label>
+            <form method="POST" action="">
+                <h1 class="mt-5 mb-2 has-text-white" style="font-family: 'Kaisei Tokumin';font-size: 50px;">Facilities Form</h1>
+
+                <div>
+                     <ol type="1" class="p-2">
+                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Students can submit their complaints using this form for following facilities: Bedroom, Bathroom, TV Room, Recreation Room, Prayer Room, Pantry, and Play Room. </li>
+                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Please ensure that all complaints are explained clearly and avoid using any inappropriate language or cussing in your submissions.</li>
+                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu">Please provide pictures to ensure the hostel department take heavy notes on your complaints.</li>
+                     </ol>
+                </div>
+                
+
+                <div class="file has-name mb-5">
+    <div class="container">
+        <h1 class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
+  <label class="file-label">
+    <input class="file-input" type="file" name="resume" />
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label"> Choose a file… </span>
+    </span>
+    <span class="file-name has-text-white"> Screen Shot 2017-07-29 at 15.54.25.png </span>
+  </label>
+  </div>
+</div>
+
+<div>
+    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Room Type</h1>
+    <div class="select mb-5">
+  <select>
+    <option>Room</option>
+    <option>With options</option>
+  </select>
+</div>
+</div>
+
+                               <div class="field">
+                    <label class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Message</label>
                     <div class="control">
                         <textarea class="textarea" placeholder="Textarea" name="message" required></textarea>
                     </div>
                 </div>
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button is-link" name="submit" type="submit">Submit</button>
+                        <button class="button is-dark" name="submit" type="submit">Submit</button>
                     </div>
                     <div class="control">
                         <button class="button is-link is-light" type="reset">Cancel</button>
