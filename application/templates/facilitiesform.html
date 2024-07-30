@@ -62,7 +62,7 @@
 
 <div>
     <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Room Type</h1>
-    <div class="select mb-5">
+    <div class="select mb-5" id="roomtype">
   <select>
     <option>Room</option>
     <option>With options</option>
@@ -70,7 +70,7 @@
 </div>
 </div>
 
-<div class="field" style="font-family: Ubuntu; font-size: 20px;">
+<div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
     {{form.message.label(class="label has-text-white") }}
 
    {% if form.message.errors %}       
@@ -87,7 +87,7 @@
  </div>
                     
 
-<div class="file has-name mb-5">
+<div class="file has-name mb-5" id="fileImage">
     <div class="container mt-5 mb-5">
         <h1 class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
   <label class="file-label">
@@ -134,8 +134,25 @@ let help = document.getElementById('help');
    help.addEventListener("focus" , () => {
      introJs().setOptions({
   steps: [{
+    intro : "Welcome to facilities complaint form." 
+  },{
+    element: document.querySelector('#roomtype'),
+    intro: "Select your room type." ,
+  },{
+    element: document.querySelector('#message'),
+    intro: "Type your concerns/complaints here" ,
+   }, {
+    element: document.querySelector('#fileImage'),
+    intro: "Insert photos of the room/things that are needed to be focused on." ,
+   },{
+    element: document.querySelector('#submit'),
+    intro: "Submit your complaints once it is done." ,
+   }, {
     element: document.querySelector('#cancel'),
-    intro: "Click here to clear your complaints" ,
+    intro: "Click here to clear your complaints." ,
+    
+
+
   }]
 }).start();
    });
