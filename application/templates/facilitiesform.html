@@ -46,6 +46,7 @@
     <div class="container p-5">
                <div class="field">
             <form method="POST" action="">
+                {{ form.hidden_tag() }}
                 <h1 class="mt-5 mb-2 has-text-white" style="font-family: 'Kaisei Tokumin';font-size: 50px;">Facilities Form</h1>
 
                 <div>
@@ -69,11 +70,22 @@
 </div>
 </div>
 
-                               <div class="field">
-                    <label class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Message</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Textarea" name="message" required></textarea>
-                    </div>
+<div class="field" style="font-family: Ubuntu; font-size: 20px;">
+    {{form.message.label(class="label has-text-white") }}
+
+   {% if form.message.errors %}       
+       {{form.message(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.message.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.message(class="control textarea" ,  placeholder='exp : I would like to express about my concerns regarding ...')}}
+   {% endif %}                 
+ </div>
+                    
 
                           <div class="file has-name mb-5">
     <div class="container mt-5 mb-5">
@@ -108,29 +120,15 @@
     <script src="https://cdn.jsdelivr.net/npm/intro.js@8.0.0-beta.1/minified/intro.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Initialize introJs using the new method
-            const tour = introJs();
-
-            // Define steps for the tour
-            tour.addSteps([
-                {
-                    element: '#submit',
-                    title: 'Submit Button',
-                    intro: 'Click here to submit your complaint.',
-                    position: 'bottom'
-                },
-                {
-                    element: '#cancel',
-                    title: 'Cancel Button',
-                    intro: 'This is the cancel button.',
-                    position: 'bottom'
-                }
-            ]);
-
-            // Start the tour
-            tour.start();
-        });
+       introJs().setOptions({
+       steps: [{
+          intro: "Hello world!"
+        }, {
+          element: document.querySelector('#cancel'),
+           intro: "Click here to login!"
+         }]
+          }).start();
+        
     </script>
 </body>
 </html>

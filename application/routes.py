@@ -1,8 +1,8 @@
 from flask import render_template , flash , redirect , url_for , abort
 from application import app , db , bcrypt
-from application.form import LoginForm , RegistrationForm
+from application.form import LoginForm , RegistrationForm , FacilitiesForm
 from flask_login import current_user , login_user , logout_user , login_required
-from application.models import User
+from application.models import User , Facilities
 import os
 
 @app.route("/" , methods = ['POST' , 'GET'])
@@ -49,7 +49,14 @@ def home():
 
 @app.route('/facilitiesform' , methods = ['POST' , 'GET'])
 def facilitiesform():
-    return render_template('facilitiesform.html')
+    form = FacilitiesForm()
+    if form.validate_on_submit():
+       facilities = Facilities(message = form.message.data , author = current_user)
+       db.session.add(facilities)
+       db.session.commit()
+       flash(f'Message is sent!')
+       return redirect(url_for('facilitiesform'))
+    return render_template('facilitiesform.html' , form = form)
     
 
 
