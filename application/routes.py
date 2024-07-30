@@ -57,6 +57,11 @@ def facilitiesform():
        flash(f'Message is sent!')
        return redirect(url_for('facilitiesform'))
     return render_template('facilitiesform.html' , form = form)
+
+
+@app.route('/mycomplaints')
+def mycomplaints():
+    return render_template('mycomplaints.html')
     
 
 

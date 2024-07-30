@@ -31,11 +31,23 @@
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
+                        {% if current_user.is_authenticated %}
+                           <div class="buttons">
+                            <a class="button is-dark">{{ current_user.username }}</a>
+                           </div>
+          
+                           {% else %}
+          
                         <div class="buttons">
-                            <a class="button is-dark" style="font-family: Ubuntu;"><strong>Sign up</strong></a>
-                            <a class="button is-light" style="font-family: Ubuntu;">Log in</a>
+                          <a class="button is-dark" style="font-family: Ubuntu;" >
+                            <strong>Sign up</strong>
+                          </a>
+                          <a class="button is-light" style="font-family: Ubuntu;">
+                            Log in
+                          </a>
                         </div>
-                    </div>
+                        {% endif %}
+                      </div>
                 </div>
             </div>
         </div>
@@ -47,7 +59,7 @@
                <div class="field">
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
-                <h1 class="mt-5 mb-2 has-text-white" style="font-family: 'Kaisei Tokumin';font-size: 50px;">Facilities Form</h1>
+                <h1 class="mt-5 mb-2 has-text-white" style="font-family: 'Kaisei Tokumin';font-size: 50px;" id="title">Facilities Form</h1>
 
                 <div>
                      <ol type="1" class="p-2">
@@ -134,22 +146,23 @@ let help = document.getElementById('help');
    help.addEventListener("focus" , () => {
      introJs().setOptions({
   steps: [{
-    intro : "Welcome to facilities complaint form." 
+    element : document.querySelector("#title"),
+    intro : "1. Welcome to facilities complaint form." 
   },{
     element: document.querySelector('#roomtype'),
-    intro: "Select your room type." ,
+    intro: "2. Select your room type." ,
   },{
     element: document.querySelector('#message'),
-    intro: "Type your concerns/complaints here" ,
+    intro: "3. Type your concerns/complaints message here" ,
    }, {
     element: document.querySelector('#fileImage'),
-    intro: "Insert photos of the room/things that are needed to be focused on." ,
+    intro: "4. Insert photos of the room/things that are needed to be focused on." ,
    },{
     element: document.querySelector('#submit'),
-    intro: "Submit your complaints once it is done." ,
+    intro: "5. Submit your complaints once it is done." ,
    }, {
     element: document.querySelector('#cancel'),
-    intro: "Click here to clear your complaints." ,
+    intro: "6. Click here to clear your complaints." ,
     
 
 
