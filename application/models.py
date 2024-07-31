@@ -25,9 +25,11 @@ class User(db.Model , UserMixin ):
 
 class Facilities(db.Model , UserMixin):
        id = db.Column(db.Integer , primary_key = True)
+       photo_evidence = db.Column(db.String() , nullable = False )
        message = db.Column(db.String(1000) , nullable = True)
        createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
        user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
+
 
 
 
