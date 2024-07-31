@@ -61,8 +61,8 @@ def facilitiesform():
 
 @app.route('/mycomplaints')
 def mycomplaints():
-    return render_template('mycomplaints.html')
-    
+    facilities = Facilities.query.all()
+    return render_template('mycomplaints.html' , facilities = facilities)
 
 
 

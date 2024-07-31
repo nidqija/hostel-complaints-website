@@ -35,7 +35,7 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" style="font-family: Ubuntu;">
+            <a class="navbar-item" style="font-family: Ubuntu;" href="{{url_for('home')}}">
               Home
             </a>
 
@@ -96,10 +96,58 @@
 
       </nav>
 
+      {% block content %}
+
       <div class="container">
         <h1 class="mt-5 p-2" style="font-family: Tokumin Kaisei;color: white; font-size: 50px;">My Complaints</h1>
         <h5 class="p-2" style="font-size: 15px;font-family: Ubuntu;">This is a page to view your complaints that you have sent , you can view and edit your complaints</h5>
+
+        
       </div>
+
+      <div class="container card mt-5">
+      <div class=" container mt-5">
+         <footer class="card-footer">
+         <a href="#" class="card-footer-item">All</a>
+         <a href="#" class="card-footer-item">Facilities</a>
+         <a href="#" class="card-footer-item">Integrity</a>
+         <a href="#" class="card-footer-item">Promotions and Shoutouts</a>
+      </footer>
+
+      </div>
+        </div>
+
+      {% for facility in facilities %}
+
+      <div class="container">
+        <div class="card mt-5">
+         <header class="card-header">
+           <p class="card-header-title">Component</p>
+             <button class="card-header-icon" aria-label="more options">
+               <span class="icon">
+                 <i class="fas fa-angle-down" aria-hidden="true"></i>
+               </span>
+             </button>
+        </header>
+         <div class="card-content">
+            <div class="content">
+              {{ facility.message }}
+            <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+            <br />
+            <time datetime="2016-1-1">{{ facility.createdAt }}</time>
+           </div>
+         </div>
+       <footer class="card-footer">
+      
+         <a href="#" class="card-footer-item">Edit</a>
+         <a href="#" class="card-footer-item">Delete</a>
+      </footer>
+       </div>
+      </div>
+
+      {% endfor %}
+
+      {% endblock content %}
 
 
 

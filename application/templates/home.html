@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
 
 </head>
-<body>
+<body id="title">
     <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
       <div class="container">
         <div class="navbar-brand">
@@ -37,7 +37,7 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" style="font-family: Ubuntu;">
+            <a class="navbar-item" style="font-family: Ubuntu;" href="{{url_for('home')}}">
               Home
             </a>
 
@@ -62,7 +62,7 @@
               </a>
       
               <div class="navbar-dropdown">
-                <a class="navbar-item">
+                <a class="navbar-item" href="{{url_for('mycomplaints')}}">
                   My Complaints
                 </a>
                 <a class="navbar-item">
@@ -108,7 +108,7 @@
         <div class="p-5">
           <h1 class="has-text-white" style="font-family: 'Kaisei Tokumin'; font-size: 48px;">
           </a>Welcome to Complaintments Official Website</h1>
-          <h5 class="has-text-white mt-5" style="font-family: 'Kaisei Tokumin';font-size: 20px;" id="title">"The SCC official website: your gateway to updates, resources, and services. Stay informed and connected."</h5>
+          <h5 class="has-text-white mt-5" style="font-family: 'Kaisei Tokumin';font-size: 20px;" >"The SCC official website: your gateway to updates, resources, and services. Stay informed and connected."</h5>
         </div>
       </div>
     </div>
@@ -145,9 +145,9 @@
                 </div>
               </div>
             </div>
-            <div class="column is-4-desktop is-6-tablet">
+            <div class="column is-4-desktop is-6-tablet" id="integrity">
               <div class="card p-3">
-                <div class="card-image mb-4 is-relative" id="integrity">
+                <div class="card-image mb-4 is-relative" >
                   <img class="image is-fullwidth is-rounded is-cover" src="https://www.shutterstock.com/image-vector/core-values-banner-web-icon-260nw-2153439907.jpg" alt="alt">
                 </div>
                 <div class="card-content">
@@ -170,9 +170,9 @@
                 </div>
               </div>
             </div>
-            <div class="column is-4-desktop is-6-tablet">
+            <div class="column is-4-desktop is-6-tablet" id="promotions-shoutout">
               <div class="card p-3">
-                <div class="card-image mb-4 is-relative" id="promotions-shoutout">
+                <div class="card-image mb-4 is-relative" >
                   <img class="image is-fullwidth is-rounded is-cover" style="height:110px;" src="https://www.shutterstock.com/image-vector/data-analysis-icons-research-business-260nw-2100934249.jpg" alt="alt">
                 </div>
                 <div class="card-content">
@@ -214,7 +214,15 @@
           </div>
           
       </div>
+
+     
       </section>
+      <div class="has-background-primary">
+        <div class="container">
+          <h1 class=" has-text-black p-4" style="font-size: 40px; font-family: Kaisei Tokumin;">Contact Us</h1>
+        </div>
+       
+      </div>
     </div>
 
     
@@ -249,7 +257,12 @@
    },{
     element: document.querySelector('#profile'),
     intro: "5. Click here to view your profile" ,
-    
+  
+     
+  
+
+   
+  
 
 
   }]
