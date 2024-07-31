@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+
 </head>
 <body>
     <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
@@ -79,7 +81,7 @@
           <div class="navbar-end">
             <div class="navbar-item">
               {% if current_user.is_authenticated %}
-                 <div class="buttons">
+                 <div class="buttons" id="profile">
                   <a class="button is-dark">{{ current_user.username }}</a>
                  </div>
 
@@ -106,7 +108,7 @@
         <div class="p-5">
           <h1 class="has-text-white" style="font-family: 'Kaisei Tokumin'; font-size: 48px;">
           </a>Welcome to Complaintments Official Website</h1>
-          <h5 class="has-text-white mt-5" style="font-family: 'Kaisei Tokumin';font-size: 20px;">"The SCC official website: your gateway to updates, resources, and services. Stay informed and connected."</h5>
+          <h5 class="has-text-white mt-5" style="font-family: 'Kaisei Tokumin';font-size: 20px;" id="title">"The SCC official website: your gateway to updates, resources, and services. Stay informed and connected."</h5>
         </div>
       </div>
     </div>
@@ -116,15 +118,15 @@
         <div class="container">
           <h1 class="has-text-centered p-5" style="font-family: Kansei Tokumin; color: white; font-size: 40px;">Make a complaint</h1>
           <div class="columns is-multiline">
-            <div class="column is-4-desktop is-6-tablet">
+            <div class="column is-4-desktop is-6-tablet" id="facilities">
               <div class="card p-3">
                 <div class="card-image mb-4 is-relative">
                   <img class="image is-fullwidth is-rounded is-cover" src="https://as1.ftcdn.net/v2/jpg/05/85/99/22/1000_F_585992236_a46798gZgim3OpJ9TlJH7nmEAjcs7aUs.jpg" alt="alt">
                 </div>
-                <div class="card-content">
+                <div class="card-content" >
                   <div class="content is-flex is-justify-content-space-between is-align-items-center">
                     <div>
-                      <h3 class="title is-size-6 mb-1" style="font-family: Ubuntu;">Facilities</h3>
+                      <h3 class="title is-size-6 mb-1" style="font-family: Ubuntu;" >Facilities</h3>
                       <span class="subtitle" style="font-size: 12px; font-family: Ubuntu;">Bedroom , Bathroom , TV Room , Recreation Room , Prayer Room , Pantry , Play Room</span>
                     </div>
                
@@ -145,7 +147,7 @@
             </div>
             <div class="column is-4-desktop is-6-tablet">
               <div class="card p-3">
-                <div class="card-image mb-4 is-relative">
+                <div class="card-image mb-4 is-relative" id="integrity">
                   <img class="image is-fullwidth is-rounded is-cover" src="https://www.shutterstock.com/image-vector/core-values-banner-web-icon-260nw-2153439907.jpg" alt="alt">
                 </div>
                 <div class="card-content">
@@ -170,7 +172,7 @@
             </div>
             <div class="column is-4-desktop is-6-tablet">
               <div class="card p-3">
-                <div class="card-image mb-4 is-relative">
+                <div class="card-image mb-4 is-relative" id="promotions-shoutout">
                   <img class="image is-fullwidth is-rounded is-cover" style="height:110px;" src="https://www.shutterstock.com/image-vector/data-analysis-icons-research-business-260nw-2100934249.jpg" alt="alt">
                 </div>
                 <div class="card-content">
@@ -224,12 +226,41 @@
  
       
 
-    <script src="/scripts/script.js">
-        
+    <script>
+        let help = document.getElementById('help');
+
+        help.addEventListener('focus' , () => {
+          introJs().setOptions({
+  steps: [{
+    element : document.querySelector("#title"),
+    intro : "1. Welcome to Hostel Complaints Website." 
+  },{
+    element: document.querySelector('#facilities'),
+    intro: "2. Click here to send your complaints regarding facilities in hostel , such as bedroom items , play room items" ,
+    position :'right',
+  },{
+    element: document.querySelector('#integrity'),
+    intro: "3. Click here to send your complaints regarding stolen items , crimes or lost and found items" ,
+    position :'right',
+   }, {
+    element: document.querySelector('#promotions-shoutout'),
+    intro: "4. Click here to send your shoutouts , representing any club programmes or your freelance business!" ,
+    position : "left",
+   },{
+    element: document.querySelector('#profile'),
+    intro: "5. Click here to view your profile" ,
+    
+
+
+  }]
+}).start();
+        })
     </script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script> 
+<script src="https://unpkg.com/intro.js/intro.js"></script>
+
 </body>
 </html>
