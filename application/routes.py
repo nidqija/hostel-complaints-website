@@ -3,6 +3,8 @@ from application import app , db , bcrypt
 from application.form import LoginForm , RegistrationForm , FacilitiesForm
 from flask_login import current_user , login_user , logout_user , login_required
 from application.models import User , Facilities
+from werkzeug.utils import secure_filename
+import uuid as uuid
 import os
 
 @app.route("/" , methods = ['POST' , 'GET'])
@@ -51,11 +53,22 @@ def home():
 def facilitiesform():
     form = FacilitiesForm()
     if form.validate_on_submit():
-       facilities = Facilities(message = form.message.data , author = current_user)
-       db.session.add(facilities)
-       db.session.commit()
-       flash(f'Message is sent!')
-       return redirect(url_for('facilitiesform'))
+      if form.photo_evidence.data:
+        photo = form.photo_evidence.data
+        photo_filename = secure_filename(photo.filename)
+        photo_name = str(uuid.uuid1()) + '_' + photo_filename
+        photo.save(os.path.join(app.config['UPLOADED_FOLDER'] , photo_name))
+
+      else:
+        photo_name = None
+
+
+      facilities = Facilities(message = form.message.data , photo_evidence = photo_name)
+      db.session.add(facilities)
+      db.session.commit()
+      flash(f'Message is sent!')
+      return redirect(url_for('facilitiesform'))
+
     return render_template('facilitiesform.html' , form = form)
 
 

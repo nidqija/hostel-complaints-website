@@ -97,24 +97,23 @@
        {{form.message(class="control textarea" ,  placeholder='exp : I would like to express about my concerns regarding ...')}}
    {% endif %}                 
  </div>
-                    
 
-<div class="file has-name mb-5" id="fileImage">
-    <div class="container mt-5 mb-5">
-        <h1 class="has-text-white mb-2" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
-  <label class="file-label">
-    <input class="file-input" type="file" name="resume" />
-    <span class="file-cta">
-      <span class="file-icon">
-        <i class="fas fa-upload"></i>
-      </span>
-      <span class="file-label" > Choose a file… </span>
-    </span>
-    <span class="file-name has-text-white"> Screen Shot 2017-07-29 at 15.54.25.png </span>
-  </label>
-  </div>
-</div>
-</div>
+ <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
+    {{form.photo_evidence.label(class="label has-text-white") }}
+
+   {% if form.photo_evidence.errors %}       
+       {{form.photo_evidence(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.photo_evidence.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.photo_evidence(class="control textarea")}}
+   {% endif %}                 
+ </div>
+                    
                 <div class="field is-grouped"  >
                     <div class="control">
                         <button class="button is-dark" name="submit" type="submit" id="submit">Submit</button>
