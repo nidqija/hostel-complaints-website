@@ -53,19 +53,21 @@ def home():
 def facilitiesform():
     form = FacilitiesForm()
     if form.validate_on_submit():
+
       if form.photo_evidence.data:
-        photo = form.photo_evidence.data
-        photo_filename = secure_filename(photo.filename)
-        photo_name = str(uuid.uuid1()) + '_' + photo_filename
-        photo.save(os.path.join(app.config['UPLOADED_FOLDER'] , photo_name))
+        photo_evidence = form.photo_evidence.data
+        photo_evidence_filename = secure_filename(photo_evidence.filename)
+        photo_evidence_name = str(uuid.uuid1()) + '_' + photo_evidence_filename
+        photo_evidence.save(os.path.join(app.config['UPLOADED_FOLDER'] , photo_evidence_name))
 
       else:
-        photo_name = None
+
+        photo_evidence_name = None
 
 
-      facilities = Facilities(message = form.message.data , photo_evidence = photo_name)
-      db.session.add(facilities)
-      db.session.commit()
+      facilities = Facilities(message = form.message.data , photo_evidence = photo_evidence_name , author = current_user)
+      db.session.add(facilities)    
+      db.session.commit()       
       flash(f'Message is sent!')
       return redirect(url_for('facilitiesform'))
 
