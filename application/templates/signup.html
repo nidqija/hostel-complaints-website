@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+
 </head>
 <body>
     <section class="hero is-primary is-fullheight">
@@ -36,7 +38,7 @@
                   </div>
              
   
-                  <div class="field">
+                  <div class="field" id="username">
                     {{form.username.label(class="label has-text-white")}}
 
                     {% if form.username.errors %}       
@@ -50,9 +52,7 @@
                     {% else %}
                         {{form.username(class="control input" , placeholder='exp : John Doe')}}
                     {% endif %}
-                  </div>
-
-                  <div class="field">
+                  </cgetElementsByClassName("")                  <div class="field">
                     {{form.email.label(class="label has-text-white")}}
 
                     {% if form.email.errors %}       
@@ -70,7 +70,7 @@
                   </div>
 
 
-                   <div class="field">
+                   <div class="field" id="password">
                     {{form.password.label(class="label has-text-white")}}
 
                     {% if form.password.errors %}       
@@ -87,7 +87,7 @@
 
                   </div>
 
-                     <div class="field">
+                     <div class="field" id="confirmpassword">
                       {{form.confirmpassword.label(class="label has-text-white")}}
 
                       {% if form.confirmpassword.errors %}       
@@ -111,9 +111,6 @@
                     <div class="control">
                       {{form.submit(class="button is-link")}}
                     </div>
-                    <div class="control">
-                      <button class="button is-link is-light">Clear</button>
-                    </div>
                   </div>
 
                   
@@ -135,12 +132,14 @@
  
       
 
-    <script src="/scripts/script.js">
-        
+    <script>
+      
     </script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script> 
+<script src="https://unpkg.com/intro.js/intro.js"></script>
+
 </body>
 </html>

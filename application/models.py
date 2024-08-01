@@ -16,6 +16,8 @@ class User(db.Model , UserMixin ):
         password = db.Column(db.String(120) , nullable = False)
         createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
         facilities = db.relationship('Facilities' , backref = 'author' , lazy = True)
+        integrity = db.relationship('Integrity' , backref = 'author' , lazy = True)
+        shoutouts = db.relationship('Shoutous' , backref = 'author' , lazy = True)
         
 
         
@@ -29,6 +31,23 @@ class Facilities(db.Model , UserMixin):
        message = db.Column(db.String(1000) , default='None' , nullable = True)
        createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
        user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
+
+
+class Integrity(db.Model , UserMixin):
+      id = db.Column(db.Integer , primary_key = True)
+      photo_evidence = db.Column(db.String() , default = 'None' ,  nullable = False )
+      message = db.Column(db.String(1000) , default='None' , nullable = True)
+      createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
+      user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
+
+class Shoutouts(db.Model , UserMixin):
+      id = db.Column(db.Integer , primary_key = True)
+      photo_evidence = db.Column(db.String() , default = 'None' ,  nullable = False )
+      message = db.Column(db.String(1000) , default='None' , nullable = True)
+      createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
+      user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
+
+
 
 
 
