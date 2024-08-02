@@ -80,5 +80,10 @@ def mycomplaints():
     return render_template('mycomplaints.html' , facilities = facilities)
 
 
+@app.route('/integrityform')
+def integrityform():
+    return render_template('integrityform.html')
+
+
 
 

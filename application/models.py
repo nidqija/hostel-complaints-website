@@ -17,7 +17,7 @@ class User(db.Model , UserMixin ):
         createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
         facilities = db.relationship('Facilities' , backref = 'author' , lazy = True)
         integrity = db.relationship('Integrity' , backref = 'author' , lazy = True)
-        shoutouts = db.relationship('Shoutous' , backref = 'author' , lazy = True)
+        shoutouts = db.relationship('Shoutouts' , backref = 'author' , lazy = True)
         
 
         
@@ -28,6 +28,9 @@ class User(db.Model , UserMixin ):
 class Facilities(db.Model , UserMixin):
        id = db.Column(db.Integer , primary_key = True)
        photo_evidence = db.Column(db.String() , default = 'None' ,  nullable = False )
+       hostel_block = db.Column(db.String(100) , nullable=False)
+       hostel_parts = db.Column(db.String(100) , nullable=False)
+       hostel_room = db.Column(db.String(100) , nullable=False)
        message = db.Column(db.String(1000) , default='None' , nullable = True)
        createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
        user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)
