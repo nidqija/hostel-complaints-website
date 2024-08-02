@@ -65,7 +65,7 @@ def facilitiesform():
         photo_evidence_name = None
 
 
-      facilities = Facilities(message = form.message.data , photo_evidence = photo_evidence_name , author = current_user)
+      facilities = Facilities(message = form.message.data ,  hostel_block = form.hostelblock.data , hostel_parts = form.hostelparts.data , hostel_room = form.hostelroom.data, photo_evidence = photo_evidence_name , author = current_user)
       db.session.add(facilities)    
       db.session.commit()       
       flash(f'Message is sent!')
