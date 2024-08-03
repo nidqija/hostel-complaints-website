@@ -82,7 +82,14 @@
             <div class="navbar-item">
               {% if current_user.is_authenticated %}
                  <div class="buttons" id="profile">
-                  <a class="button is-dark">{{ current_user.username }}</a>
+                  <a class="button is-dark modal-button" data-target= "#modal-profile">{{ current_user.username }}</a>
+                  <div class="modal" id="modal-profile">
+                     <div class="modal-background" ></div>
+                       <div class="modal-content">
+                           hello
+                       </div>
+                     <button class="modal-close is-large" aria-label="close"></button>
+                   </div>
                  </div>
 
                  {% else %}
@@ -280,7 +287,20 @@
   }]
 }).start();
         })
-    </script>
+
+
+                $(".modal-button").click(function() {
+            var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+         });
+         
+         $(".modal-close").click(function() {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+         });   
+
+ </script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
