@@ -63,7 +63,7 @@
 
                 <div>
                      <ol type="1" class="p-2">
-                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu'">Students can submit their complaints using this form for following facilities: <br> Crimes , Lost Items , Behavioral Issue , Found Items Announcements </li>
+                        <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu'">Students can submit their complaints using this form for following facilities: <br> Crimes , Lost Items , Behavioral Issue , Found Items Announcements. </li>
                         <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu'">Please ensure that all complaints are explained clearly and avoid using any inappropriate language or cussing in your submissions.</li>
                         <li class="mb-5 mt-2 has-text-white" style="font-family :'Ubuntu'">Please provide pictures to ensure the hostel department take heavy notes on your complaints.</li>
                      </ol>
@@ -72,19 +72,59 @@
 
           
 
+
 <div>
-    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Room Type</h1>
-    <div class="select mb-5" id="roomtype">
-  <select>
-    <option>Room</option>
-    <option>With options</option>
-  </select>
+    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Your Room</h1>
+
 </div>
-</div>
+
+<div class="columns p-3" style="font-family: Ubuntu; font-size: 20px;" id="roomtype">
+   {% if form.hostelblock.errors %}       
+       {{form.hostelblock(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.hostelblock.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.hostelblock(class="control column is-one-fifth p-2 mr-3")}}
+   {% endif %} 
+
+     {% if form.hostelparts.errors %}       
+       {{form.hostelparts(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.hostelparts.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.hostelparts(class="control column is-one-fifth p-2 mr-3")}}
+   {% endif %}  
+
+     {% if form.hostelroom.errors %}       
+       {{form.hostelroom(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.hostelroom.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.hostelroom(class="control column is-one-fifth p-2 mr-3" , placeholder = "exp : 403")}}
+   {% endif %}  
+ 
+
+
+
+ </div>
 
 <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
-    {{form.message.label(class="label has-text-white") }}
+<div>
+    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Message</h1>
 
+</div>
    {% if form.message.errors %}       
        {{form.message(class="form-control form-control-lg is-invalid")}}
        <div>
@@ -98,9 +138,11 @@
    {% endif %}                 
  </div>
 
- <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
-    {{form.photo_evidence.label(class="label has-text-white") }}
+ <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="fileImage">
+<div>
+    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
 
+</div>
    {% if form.photo_evidence.errors %}       
        {{form.photo_evidence(class="form-control form-control-lg is-invalid")}}
        <div>
@@ -110,7 +152,7 @@
        </div>
 
    {% else %}
-       {{form.photo_evidence(class="control textarea")}}
+       {{form.photo_evidence(class="control input mb-5")}}
    {% endif %}                 
  </div>
                     
@@ -146,13 +188,13 @@ let help = document.getElementById('help');
      introJs().setOptions({
   steps: [{
     element : document.querySelector("#title"),
-    intro : "1. Welcome to facilities complaint form." 
+    intro : "1. Welcome to integrity complaint form." 
   },{
     element: document.querySelector('#roomtype'),
     intro: "2. Select your room type." ,
   },{
     element: document.querySelector('#message'),
-    intro: "3. Type your concerns/complaints message here" ,
+    intro: "3. Type your concerns/complaints/description message here" ,
    }, {
     element: document.querySelector('#fileImage'),
     intro: "4. Insert photos of the room/things that are needed to be focused on." ,

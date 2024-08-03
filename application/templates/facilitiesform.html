@@ -78,7 +78,7 @@
 
 </div>
 
-<div class="columns p-3" style="font-family: Ubuntu; font-size: 20px;" id="message">
+<div class="columns p-3" style="font-family: Ubuntu; font-size: 20px;" id="roomtype">
    {% if form.hostelblock.errors %}       
        {{form.hostelblock(class="form-control form-control-lg is-invalid")}}
        <div>
@@ -138,7 +138,7 @@
    {% endif %}                 
  </div>
 
- <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
+ <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="fileImage">
 <div>
     <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Image</h1>
 
@@ -194,7 +194,7 @@ let help = document.getElementById('help');
     intro: "2. Select your room type." ,
   },{
     element: document.querySelector('#message'),
-    intro: "3. Type your concerns/complaints message here" ,
+    intro: "3. Type your concerns/complaints/description message here" ,
    }, {
     element: document.querySelector('#fileImage'),
     intro: "4. Insert photos of the room/things that are needed to be focused on." ,
