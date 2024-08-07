@@ -8,13 +8,15 @@ from application.models import  User
 class LoginForm(FlaskForm):
    email = StringField('Email' , validators=[DataRequired() , Email()])
    password = PasswordField('Password' , validators=[DataRequired()])
+   hostelroom = StringField('Hostel Room' , validators=[DataRequired()])
    remember = BooleanField('Remember me')
    submit = SubmitField('Login')
 
 class RegistrationForm(FlaskForm):
    username = StringField('Username' , validators=[DataRequired() , Length(min=2 , max=200)])
    email = StringField('Email' , validators=[DataRequired() , Email()])
-   password = PasswordField('Password' , validators=[DataRequired()])
+   hostelroom = StringField('Hostel Room' , validators = [DataRequired()])
+   password = PasswordField('Password' , validators=[DataRequired(), Length(min=8 , max=200)])
    confirmpassword = PasswordField('Confirm Password' , validators=[DataRequired() , EqualTo('password')])
    submit = SubmitField('Register')
 
@@ -27,6 +29,11 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('That email is taken , please choose another email!')
+
+   def validate_hostelroom(self , hostelroom):
+        user = User.query.filter_by(hostel_room=hostelroom.data).first()
+        if user :
+            raise ValidationError('That hostel room is taken , please choose another hostel room')
         
 
 class FacilitiesForm(FlaskForm):

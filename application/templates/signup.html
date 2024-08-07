@@ -52,7 +52,8 @@
                     {% else %}
                         {{form.username(class="control input" , placeholder='exp : John Doe')}}
                     {% endif %}
-                  </cgetElementsByClassName("")                  <div class="field">
+
+                  <div class="field">
                     {{form.email.label(class="label has-text-white")}}
 
                     {% if form.email.errors %}       
@@ -68,6 +69,22 @@
                     {% endif %}
 
                   </div>
+
+                   <div class="field">
+                     {{form.hostelroom.label(class="label has-text-white")}}
+
+                    {% if form.hostelroom.errors %}       
+                        {{form.hostelroom(class="form-control form-control-lg is-invalid")}}
+                        <div>
+                            {% for error in form.hostelroom.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{form.hostelroom(class="control input" ,  placeholder='exp : HB2 A 301')}}
+                    {% endif %}                 
+                     </div>
 
 
                    <div class="field" id="password">
