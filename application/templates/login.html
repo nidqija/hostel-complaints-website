@@ -52,7 +52,13 @@
                     {% endif %}
                   </div>
 
-                      <div class="columns p-3" style="font-family: Ubuntu; font-size: 20px;" id="roomtype">
+                            <div>
+                     {{form.hostelblock.label(class="label has-text-white mb-3")}}
+
+                  </div>
+
+                  <div class="columns p-3" style="font-family: Ubuntu; font-size: 20px;" id="roomtype">
+
    {% if form.hostelblock.errors %}       
        {{form.hostelblock(class="form-control form-control-lg is-invalid")}}
        <div>
@@ -62,7 +68,7 @@
        </div>
 
    {% else %}
-       {{form.hostelblock(class="control column is-one-fifth p-2 mr-3")}}
+       {{form.hostelblock(class="control input column is-one-fifth p-2 mr-3")}}
    {% endif %} 
 
      {% if form.hostelparts.errors %}       
@@ -74,7 +80,7 @@
        </div>
 
    {% else %}
-       {{form.hostelparts(class="control column is-one-fifth p-2 mr-3")}}
+       {{form.hostelparts(class="control input column is-one-fifth p-2 mr-3")}}
    {% endif %}  
 
      {% if form.hostelroom.errors %}       
@@ -86,13 +92,14 @@
        </div>
 
    {% else %}
-       {{form.hostelroom(class="control column is-one-fifth p-2 mr-3" , placeholder = "exp : 403")}}
+       {{form.hostelroom(class="control input column is-one-fifth p-2 mr-3" , placeholder = "exp : 403")}}
    {% endif %}  
  
 
 
 
  </div>
+
 
 
 

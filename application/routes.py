@@ -10,8 +10,7 @@ import os
 @app.route("/" , methods = ['POST' , 'GET'])
 def index():
 
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+   
 
 
     form = LoginForm()
