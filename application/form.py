@@ -7,15 +7,19 @@ from application.models import  User
 
 class LoginForm(FlaskForm):
    email = StringField('Email' , validators=[DataRequired() , Email()])
-   password = PasswordField('Password' , validators=[DataRequired()])
+   hostelblock = SelectField('Hostel Block' , choices=[('ALPHA' , 'ALPHA') , ('BETA' , 'BETA') , ('GAMMA' , 'GAMMA') , ('SIGMA' , 'SIGMA')] , validators=[DataRequired()])
+   hostelparts = SelectField('Hostel Parts' , choices =[('A' , 'A') , ('B' , 'B') , ('C','C') , ('D' , 'D')] , validators=[DataRequired()])
    hostelroom = StringField('Hostel Room' , validators=[DataRequired()])
+   password = PasswordField('Password' , validators=[DataRequired()])
    remember = BooleanField('Remember me')
    submit = SubmitField('Login')
 
 class RegistrationForm(FlaskForm):
    username = StringField('Username' , validators=[DataRequired() , Length(min=2 , max=200)])
    email = StringField('Email' , validators=[DataRequired() , Email()])
-   hostelroom = StringField('Hostel Room' , validators = [DataRequired()])
+   hostelblock = SelectField('Hostel Block' , choices=[('ALPHA' , 'ALPHA') , ('BETA' , 'BETA') , ('GAMMA' , 'GAMMA') , ('SIGMA' , 'SIGMA')] , validators=[DataRequired()])
+   hostelparts = SelectField('Hostel Parts' , choices =[('A' , 'A') , ('B' , 'B') , ('C','C') , ('D' , 'D')] , validators=[DataRequired()])
+   hostelroom = StringField('Hostel Room' , validators=[DataRequired()])
    password = PasswordField('Password' , validators=[DataRequired(), Length(min=8 , max=200)])
    confirmpassword = PasswordField('Confirm Password' , validators=[DataRequired() , EqualTo('password')])
    submit = SubmitField('Register')
