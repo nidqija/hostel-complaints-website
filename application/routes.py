@@ -1,6 +1,6 @@
 from flask import render_template , flash , redirect , url_for , abort
 from application import app , db , bcrypt
-from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm
+from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm , PromotionForm
 from flask_login import current_user , login_user , logout_user , login_required
 from application.models import User , Facilities
 from werkzeug.utils import secure_filename
@@ -102,6 +102,16 @@ def integrityform():
       return redirect(url_for('integrityform'))
 
     return render_template('integrityform.html' , form = form)
+
+
+@app.route('/promotions')
+def promotionsform():
+    form = PromotionForm()
+    return render_template('promotions.html' , form = form)
+
+
+
+
 
 
 

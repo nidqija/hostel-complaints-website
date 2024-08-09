@@ -59,6 +59,12 @@ class IntegrityForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
+class PromotionForm(FlaskForm):
+    message = StringField('Messsage' , validators=[DataRequired()])
+    photo_evidence = FileField('Image' , validators=[FileAllowed(['jpg' , 'png' , 'jpeg'] , 'Only images in jpg , png or jpeg are allowed!')])
+    submit = SubmitField('Submit')
+
+
 
 
     
