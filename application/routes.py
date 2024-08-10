@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
 
+
 @app.route("/" , methods = ['POST' , 'GET'])
 def index():
 
@@ -44,11 +45,14 @@ def signup():
 
 
 @app.route('/home')
+@login_required
+
 def home():
     return render_template('home.html')
 
 
 @app.route('/facilitiesform' , methods = ['POST' , 'GET'])
+@login_required
 def facilitiesform():
     form = FacilitiesForm()
     if form.validate_on_submit():
@@ -72,14 +76,14 @@ def facilitiesform():
 
     return render_template('facilitiesform.html' , form = form)
 
-
 @app.route('/mycomplaints')
+@login_required
 def mycomplaints():
     facilities = Facilities.query.all()
     return render_template('mycomplaints.html' , facilities = facilities)
 
-
 @app.route('/integrityform')
+@login_required
 def integrityform():
     form = IntegrityForm()
     if form.validate_on_submit():
