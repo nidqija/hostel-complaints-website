@@ -2,7 +2,7 @@ from flask import render_template , flash , redirect , url_for , abort
 from application import app , db , bcrypt
 from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm , PromotionForm
 from flask_login import current_user , login_user , logout_user , login_required
-from application.models import User , Facilities
+from application.models import User , Facilities , Integrity , Shoutouts
 from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
@@ -99,7 +99,7 @@ def integrityform():
         photo_evidence_name = None
 
 
-      facilities = Facilities(message = form.message.data ,  hostel_block = form.hostelblock.data , hostel_parts = form.hostelparts.data , hostel_room = form.hostelroom.data, photo_evidence = photo_evidence_name , author = current_user)
+      facilities = Facilities(message = form.message.data , photo_evidence = photo_evidence_name , author = current_user)
       db.session.add(facilities)    
       db.session.commit()       
       flash(f'Message is sent!')
@@ -108,9 +108,29 @@ def integrityform():
     return render_template('integrityform.html' , form = form)
 
 
-@app.route('/promotions')
+@app.route('/promotions' , methods = ['POST' , 'GET'])
 def promotionsform():
     form = PromotionForm()
+
+    if form.validate_on_submit():
+
+
+        if form.photo_evidence.data:
+            photo_evidence = form.photo_evidence.data
+            photo_evidence_filename = secure_filename(photo_evidence.filename)
+            photo_evidence_name = str(uuid.uuid1()) + '_' + photo_evidence_filename
+            photo_evidence.save(os.path.join(app.config['UPLOADED_FOLDER'] , photo_evidence_name))
+
+
+        else:
+            photo_evidence_name = None
+
+        shoutouts = Shoutouts(message = form.message.data , photo_evidence = photo_evidence_name , author = current_user )
+        db.session.add(shoutouts)
+        db.session.commit()
+        return redirect(url_for('home'))
+
+
     return render_template('promotions.html' , form = form)
 
 
