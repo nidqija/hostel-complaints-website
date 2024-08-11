@@ -82,7 +82,7 @@
             <div class="navbar-item">
               {% if current_user.is_authenticated %}
                  <div class="buttons" id="profile">
-                  <a class="button is-dark modal-button" data-target= "#modal-profile">{{ current_user.username }}</a>
+                  <a class="button is-dark modal-button"  id="currentUser">{{ current_user.username }}</a>
                   <div class="modal" id="modal-profile">
                      <div class="modal-background" ></div>
                        <div class="modal-content">
@@ -222,6 +222,15 @@
           
       </div>
 
+
+      <div class="modal">
+        <div class="modal-background">
+          <div class="modal-content has-background-white py-5 px-5">
+            <h1 class="has-text-black">hello</h1>
+          </div>
+        </div>
+      </div>
+
      
       </section>
       <div class="has-background-primary" style="height: 40vh;">
@@ -276,29 +285,25 @@
    },{
     element: document.querySelector('#profile'),
     intro: "5. Click here to view your profile" ,
-  
-     
-  
-
-   
-  
-
-
   }]
 }).start();
         })
 
 
-                $(".modal-button").click(function() {
-            var target = $(this).data("target");
-            $("html").addClass("is-clipped");
-            $(target).addClass("is-active");
-         });
-         
-         $(".modal-close").click(function() {
-            $("html").removeClass("is-clipped");
-            $(this).parent().removeClass("is-active");
-         });   
+
+let currentuser = document.querySelector('#currentUser');
+let modalBg = document.querySelector(".modal-background");
+let modal = document.querySelector('.modal');
+
+
+currentuser.addEventListener("click" , () =>{
+  modal.classList.add("is-active");
+});
+
+modalBg.addEventListener("click" , () =>{
+  modal.classList.remove("is-active");
+});
+          
 
  </script>
 
