@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+</head>
+<body>
+    <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1 style="font-family: Ubuntu; font-size: 25px;" id="Logo" class="p-5 has-text-dark">COMPLAINTMENTS</h1>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" style="font-family: Ubuntu;">Home</a>
+                    <a class="navbar-item p-5" style="font-family: Ubuntu;">Make a complaint</a>
+                    <a class="navbar-item" style="font-family: Ubuntu;">Announcements</a>
+                    <a class="navbar-item p-5">Guidelines</a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">My Library</a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">My Complaints</a>
+                            <a class="navbar-item">My Chats</a>
+                            <a class="navbar-item">Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        {% if current_user.is_authenticated %}
+                           <div class="buttons">
+                            <a class="button is-dark">{{ current_user.username }}</a>
+                           </div>
+          
+                           {% else %}
+          
+                        <div class="buttons">
+                          <a class="button is-dark" style="font-family: Ubuntu;" >
+                            <strong>Sign up</strong>
+                          </a>
+                          <a class="button is-light" style="font-family: Ubuntu;">
+                            Log in
+                          </a>
+                        </div>
+                        {% endif %}
+                      </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="facilitiesformbackground has-background-black" style="height: 100vh;" >
+    <div class="container p-5">
+        <div class="field p-5">
+          <div class="p-5">
+          	<h1 class="is-size-3 has-text-white mb-5">Your Profile</h1>
+          	<div class="card">
+             <div class="card-content">
+               <div class="content p-5">
+                 <h5> Username : {{ current_user.username }}</h5>
+                 <h5> Email : {{ current_user.email }}</h5>
+                 <h5> Hostel Room : {{ current_user.hostel_block }} {{ current_user.hostel_parts }} {{ current_user.hostel_room }}</h5>
+
+              </div>
+           </div>
+          </div>
+          </div>
+        </div>
+
+    
+    </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+     <script src="https://unpkg.com/intro.js/intro.js"></script>
+    <script>
+
+let help = document.getElementById('help');
+
+   help.addEventListener("focus" , () => {
+     introJs().setOptions({
+  steps: [{
+    element : document.querySelector("#title"),
+    intro : "1. Welcome to integrity complaint form." 
+  },{
+    element: document.querySelector('#message'),
+    intro: "3. Type your concerns/complaints/description message here" ,
+   }, {
+    element: document.querySelector('#fileImage'),
+    intro: "4. Insert photos of the room/things that are needed to be focused on." ,
+   },{
+    element: document.querySelector('#submit'),
+    intro: "5. Submit your complaints once it is done." ,
+   }, {
+    element: document.querySelector('#cancel'),
+    intro: "6. Click here to clear your complaints." ,
+    
+
+
+  }]
+}).start();
+   });
+        
+
+
+
+
+
+    
+
+
+        
+    </script>
+</body>
+</html>

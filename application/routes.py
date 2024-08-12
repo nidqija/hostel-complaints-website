@@ -136,7 +136,10 @@ def promotionsform():
     return render_template('promotions.html' , form = form)
 
 
+@app.route('/profilepage')
 
+def profilepage():
+    return render_template("profile.html")
 
 
 
