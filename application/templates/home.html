@@ -68,7 +68,7 @@
                 <a class="navbar-item">
                   My Chats
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href="{{url_for('profilepage')}}">
                   Profile
                 </a>
               
@@ -222,6 +222,8 @@
             <h1 class="has-text-black mb-2" > Username : {{ current_user.username }}</h1>
             <h1 class="has-text-black mb-2">Email : {{ current_user.email }}</h1>
             <h1 class="has-text-black mb-5">Hostel no : {{ current_user.hostel_block }} {{ current_user.hostel_parts }} {{ current_user.hostel_room }}</h1>
+             <a href="{{url_for('profilepage')}}"><button class="has-background-primary button has-text-dark">Profile</button></a>
+
             <button id="exitButton" class="has-background-dark button has-text-white">Exit</button>
           </div>
         </div>
