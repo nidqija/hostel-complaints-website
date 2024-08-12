@@ -9,6 +9,7 @@ import os
 
 
 @app.route("/" , methods = ['POST' , 'GET'])
+@login_required
 def index():
 
    
@@ -53,6 +54,7 @@ def home():
 
 @app.route('/facilitiesform' , methods = ['POST' , 'GET'])
 @login_required
+
 def facilitiesform():
     form = FacilitiesForm()
     if form.validate_on_submit():

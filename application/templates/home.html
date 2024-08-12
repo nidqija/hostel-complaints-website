@@ -83,13 +83,6 @@
               {% if current_user.is_authenticated %}
                  <div class="buttons" id="profile">
                   <a class="button is-dark modal-button"  id="currentUser">{{ current_user.username }}</a>
-                  <div class="modal" id="modal-profile">
-                     <div class="modal-background" ></div>
-                       <div class="modal-content">
-                           hello
-                       </div>
-                     <button class="modal-close is-large" aria-label="close"></button>
-                   </div>
                  </div>
 
                  {% else %}
@@ -225,8 +218,11 @@
 
       <div class="modal">
         <div class="modal-background">
-          <div class="modal-content has-background-white py-5 px-5">
-            <h1 class="has-text-black">hello</h1>
+          <div class="modal-content has-background-white p-5 mt-5">
+            <h1 class="has-text-black mb-2" > Username : {{ current_user.username }}</h1>
+            <h1 class="has-text-black mb-2">Email : {{ current_user.email }}</h1>
+            <h1 class="has-text-black mb-5">Hostel no : {{ current_user.hostel_block }} {{ current_user.hostel_parts }} {{ current_user.hostel_room }}</h1>
+            <button id="exitButton" class="has-background-dark button has-text-white">Exit</button>
           </div>
         </div>
       </div>
@@ -294,6 +290,7 @@
 let currentuser = document.querySelector('#currentUser');
 let modalBg = document.querySelector(".modal-background");
 let modal = document.querySelector('.modal');
+let exitbutton = document.querySelector("#exitButton");
 
 
 currentuser.addEventListener("click" , () =>{
@@ -303,6 +300,10 @@ currentuser.addEventListener("click" , () =>{
 modalBg.addEventListener("click" , () =>{
   modal.classList.remove("is-active");
 });
+
+exitbutton.addEventListener("click" , () => {
+  modal.classList.remove("is-active");
+})
           
 
  </script>
