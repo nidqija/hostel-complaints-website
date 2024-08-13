@@ -44,6 +44,7 @@ class FacilitiesForm(FlaskForm):
     hostelblock = SelectField('Hostel Block' , choices=[('ALPHA' , 'ALPHA') , ('BETA' , 'BETA') , ('GAMMA' , 'GAMMA') , ('SIGMA' , 'SIGMA')] , validators=[DataRequired()])
     hostelparts = SelectField('Hostel Parts' , choices =[('A' , 'A') , ('B' , 'B') , ('C','C') , ('D' , 'D')] , validators=[DataRequired()])
     hostelroom = StringField('Hostel Room' , validators=[DataRequired()])
+    title = StringField('Title' , validators=[DataRequired()])
     message = StringField('Messsage' , validators=[DataRequired()])
     photo_evidence = FileField('Image' , validators=[FileAllowed(['jpg' , 'png' , 'jpeg'] , 'Only images in jpg , png or jpeg are allowed!')])
     submit = SubmitField('Submit')
@@ -54,12 +55,14 @@ class IntegrityForm(FlaskForm):
     hostelblock = SelectField('Hostel Block' , choices=[('ALPHA' , 'ALPHA') , ('BETA' , 'BETA') , ('GAMMA' , 'GAMMA') , ('SIGMA' , 'SIGMA')] , validators=[DataRequired()])
     hostelparts = SelectField('Hostel Parts' , choices =[('A' , 'A') , ('B' , 'B') , ('C','C') , ('D' , 'D')] , validators=[DataRequired()])
     hostelroom = StringField('Hostel Room' , validators=[DataRequired()])
+    title = StringField('Title' , validators=[DataRequired()])
     message = StringField('Messsage' , validators=[DataRequired()])
     photo_evidence = FileField('Image' , validators=[FileAllowed(['jpg' , 'png' , 'jpeg'] , 'Only images in jpg , png or jpeg are allowed!')])
     submit = SubmitField('Submit')
 
 
 class PromotionForm(FlaskForm):
+    title = StringField('Title' , validators=[DataRequired()])
     message = StringField('Messsage' , validators=[DataRequired()])
     photo_evidence = FileField('Image' , validators=[FileAllowed(['jpg' , 'png' , 'jpeg'] , 'Only images in jpg , png or jpeg are allowed!')])
     submit = SubmitField('Submit')

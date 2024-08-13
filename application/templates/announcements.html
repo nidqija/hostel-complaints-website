@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
 </head>
-<body>
+<body class="has-background-dark">
     <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
         <div class="container">
             <div class="navbar-brand">
@@ -54,10 +54,10 @@
     </nav>
 
 
-    <div class="facilitiesformbackground has-background-black" >
+    <div class="facilitiesformbackground has-background-black" style="height:100vh" >
 
         <div class="field">
-            <h1 class="is-size-3 has-text-white has-text-centered p-6" style="font-family:'Ubuntu';">Announcements</h1>
+        <h1 class=" has-text-white has-text-centered p-6" style="font-family:'Kaisei Tokumin'; font-size: 40px;">Announcements</h1>
 
           <div class="">
 
@@ -65,6 +65,8 @@
           	<div class="card has-background-black" >
              <div class="card-content">
                <div class="content">
+
+                {% if announcements %}
         {% for announcement in announcements %}
               <div class="container">
                 <hr  class="has-background-dark"></hr>
@@ -73,6 +75,17 @@
                  <h5 class=" is-pulled-right has-text-white" style="font-size: 15px"  > Created By : {{ announcement.author.username }}</h5> <br><br>
                  </div>
          {% endfor %}
+
+
+           
+         {% else %}
+                   <div class="facilitiesformbackground has-background-black" style="height: 30vw;">
+                    <p class="has-text-centered has-text-white" style="font-family:'Ubuntu';font-size: 30px;">There are no recent announcements , stay tuned!</p>
+                   </div>
+
+         {% endif %}
+
+
 
               </div>
               </div>

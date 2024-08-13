@@ -72,7 +72,23 @@
 
           
 
+<div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
+<div>
+    <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Title</h1>
 
+</div>
+   {% if form.title.errors %}       
+       {{form.title(class="form-control form-control-lg is-invalid")}}
+       <div>
+           {% for error in form.title.errors %}
+           <span>{{ error }}</span>
+           {% endfor %}
+       </div>
+
+   {% else %}
+       {{form.title(class="control textarea" ,  placeholder='exp : Opening Our Business Now!')}}
+   {% endif %}                 
+ </div>
 
 
 
