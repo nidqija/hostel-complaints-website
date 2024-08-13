@@ -46,6 +46,7 @@ class Integrity(db.Model , UserMixin):
 class Shoutouts(db.Model , UserMixin):
       id = db.Column(db.Integer , primary_key = True)
       photo_evidence = db.Column(db.String() , default = 'None' ,  nullable = False )
+      title = db.Column(db.String(1000) , default='None' , nullable = True)
       message = db.Column(db.String(1000) , default='None' , nullable = True)
       createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
       user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = False)

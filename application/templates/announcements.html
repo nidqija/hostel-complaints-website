@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Announcements</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
@@ -54,19 +54,29 @@
     </nav>
 
 
-    <div class="facilitiesformbackground has-background-black" style="height: 100vh;" >
-    <div class="container p-5">
-        <div class="field p-5">
-          <div class="p-5">
-          	<h1 class="is-size-3 has-text-white mb-5">Your Profile</h1>
-          	<div class="card">
+    <div class="facilitiesformbackground has-background-black" >
+
+        <div class="field">
+            <h1 class="is-size-3 has-text-white has-text-centered p-6" style="font-family:'Ubuntu';">Announcements</h1>
+
+          <div class="">
+
+         <div class="container ">
+          	<div class="card has-background-black" >
              <div class="card-content">
-               <div class="content p-5">
-                 <h5> Username : {{ current_user.username }}</h5>
-                 <h5> Email : {{ current_user.email }}</h5>
-                 <h5> Hostel Room : {{ current_user.hostel_block }} {{ current_user.hostel_parts }} {{ current_user.hostel_room }}</h5>
-                 <a href="{{url_for('home')}}"><button class="has-background-primary button mt-5">back</button></a>
+               <div class="content">
+        {% for announcement in announcements %}
+              <div class="container">
+                <hr  class="has-background-dark"></hr>
+                 <h5 class=" mt-5 has-text-white" style="font-family:'Kaisei Tokumin';"> {{ announcement.message }}</h5>
+                 <h5 class=" is-pulled-right has-text-white" style="font-size: 15px" > {{ announcement.createdAt }}</h5> <br><br>
+                 <h5 class=" is-pulled-right has-text-white" style="font-size: 15px"  > Created By : {{ announcement.author.username }}</h5> <br><br>
+                 </div>
+         {% endfor %}
+
               </div>
+              </div>
+          </div>
 
 
            </div>
@@ -78,6 +88,8 @@
     
     </div>
     </div>
+
+
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
      <script src="https://unpkg.com/intro.js/intro.js"></script>
