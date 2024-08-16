@@ -146,6 +146,12 @@ def announcements():
     announcements = Shoutouts.query.all()
     return render_template("announcements.html" , announcements = announcements)
 
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
     
 
 
