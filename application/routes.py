@@ -1,8 +1,8 @@
 from flask import render_template , flash , redirect , url_for , abort
 from application import app , db , bcrypt
-from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm , PromotionForm
+from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm , PromotionForm , ChatForm
 from flask_login import current_user , login_user , logout_user , login_required
-from application.models import User , Facilities , Integrity , Shoutouts
+from application.models import User , Facilities , Integrity , Shoutouts , Chat
 from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
@@ -155,7 +155,16 @@ def logout():
 
 @app.route('/chat')
 def chat():
-   return render_template('chat.html')
+   form = ChatForm()
+
+   if form.validate_on_submit():
+      chats = Chat(message = form.message.data , author = current_user)
+      db.session.add(chats)
+      db.session.commit()
+      return redirect(url_for('chat'))
+   
+
+   return render_template('chat.html' , form = form)
 
 
 

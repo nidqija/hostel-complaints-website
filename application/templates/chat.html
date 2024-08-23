@@ -93,6 +93,35 @@
           </div>
         </nav>
 
+        <div class="has-background-dark">
+          <div class="container">
+          <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
+              <div>
+                  <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Message</h1>
+              
+              </div>
+                 {% if form.message.errors %}       
+                     {{form.message(class="form-control form-control-lg is-invalid")}}
+                     <div>
+                         {% for error in form.message.errors %}
+                         <span>{{ error }}</span>
+                         {% endfor %}
+                     </div>
+              
+                 {% else %}
+                     {{form.message(class="control textarea" ,  placeholder='exp : Opening Our Business Now!')}}
+                 {% endif %}                 
+               </div>
+          </form>
+
+          <div class="control">
+            <button class="button is-dark" name="submit" type="submit" id="submit">Submit</button>
+        </div>
+        </div>
+      </div>
+
 
 
 
