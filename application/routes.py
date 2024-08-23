@@ -2,7 +2,7 @@ from flask import render_template , flash , redirect , url_for , abort
 from application import app , db , bcrypt
 from application.form import LoginForm , RegistrationForm , FacilitiesForm , IntegrityForm , PromotionForm
 from flask_login import current_user , login_user , logout_user , login_required
-from application.models import User , Facilities , Integrity , Shoutouts 
+from application.models import User , Facilities , Integrity , Shoutouts
 from werkzeug.utils import secure_filename
 import uuid as uuid
 import os
@@ -151,6 +151,13 @@ def announcements():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/chat')
+def chat():
+   return render_template('chat.html')
+
+
 
     
 

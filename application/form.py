@@ -68,6 +68,13 @@ class PromotionForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
+class ChatForm(FlaskForm):
+    message = StringField('Message' , validators = None)
+    submit = SubmitField('Submit')
+
+
+
+
 
 
     
