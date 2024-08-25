@@ -10,6 +10,7 @@
 </head>
 <body class="has-background-black">
     <nav class="navbar has-background-white" role="navigation" aria-label="main navigation">
+      {% block content %}
         <div class="container">
           <div class="navbar-brand">
               <h1 style="font-family: Ubuntu ; font-size: 25px;" ; id="Logo" class="p-5 has-text-dark">COMPLAINTMENTS</h1>
@@ -94,33 +95,53 @@
         </nav>
 
         <div class="has-background-dark">
-          <div class="container">
-          <form method="POST">
-            {{ form.hidden_tag() }}
-            <div class="field" style="font-family: Ubuntu; font-size: 20px;" id="message">
-              <div>
-                  <h1 class="has-text-white mb-3 mt-5" style="font-family: 'Ubuntu' ; font-size:20px">Message</h1>
-              
-              </div>
-                 {% if form.message.errors %}       
-                     {{form.message(class="form-control form-control-lg is-invalid")}}
-                     <div>
-                         {% for error in form.message.errors %}
-                         <span>{{ error }}</span>
-                         {% endfor %}
-                     </div>
-              
-                 {% else %}
-                     {{form.message(class="control textarea" ,  placeholder='exp : Opening Our Business Now!')}}
-                 {% endif %}                 
-               </div>
-          </form>
+       
+         
 
-          <div class="control">
-            <button class="button is-dark" name="submit" type="submit" id="submit">Submit</button>
+        <div class="hero-body">
+            
+          <div class="container p-6 has-background-dark" style="background-color: white; border-radius: 20px;">
+            <form action="" method="post">
+              {{ form.hidden_tag() }}
+
+              <div class="container">
+                <h1 class=" is-size-3 mb-5 has-text-white" style="font-family: Ubuntu;">Login</h1>
+  
+             
+                  <div class="alert alert-danger">
+                  
+                  </div>
+             
+  
+                  <div class="field">
+                     {{form.message.label(class="label has-text-white")}}
+
+                    {% if form.message.errors %}       
+                        {{form.message(class="form-control form-control-lg is-invalid")}}
+                        <div>
+                            {% for error in form.message.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{form.message(class="control input" , placeholder='exp : johndoe@gmail.com')}}
+                    {% endif %}
+                  </div>
+
+                            <div>
+        
+                  <div class="field is-grouped">
+                    <div class="control">
+                         {{ form.submit(class = "button is-link") }}
+                    </div>
+
+
         </div>
         </div>
       </div>
+
+      {% endblock content %}
 
 
 

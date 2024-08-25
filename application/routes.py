@@ -153,7 +153,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/chat')
+@app.route('/chat' , methods = ['POST' , 'GET'])
 def chat():
    form = ChatForm()
 
