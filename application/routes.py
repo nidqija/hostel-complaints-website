@@ -156,6 +156,7 @@ def logout():
 @app.route('/chat' , methods = ['POST' , 'GET'])
 def chat():
    form = ChatForm()
+   messages = Chat.query.all()
 
    if form.validate_on_submit():
       chats = Chat(message = form.message.data , author = current_user)
@@ -164,7 +165,7 @@ def chat():
       return redirect(url_for('chat'))
    
 
-   return render_template('chat.html' , form = form)
+   return render_template('chat.html' , form = form , messages = messages)
 
 
 
