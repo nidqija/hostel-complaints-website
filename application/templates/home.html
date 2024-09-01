@@ -65,7 +65,7 @@
                 <a class="navbar-item" href="{{url_for('mycomplaints')}}">
                   My Complaints
                 </a>
-                <a class="navbar-item" href="{{url_for('chat')}}">
+                <a class="navbar-item" href="{{url_for('chat' , user_aid = messages.user_id)}}">
                   My Chats
                 </a>
                 <a class="navbar-item" href="{{url_for('profilepage')}}">

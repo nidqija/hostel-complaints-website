@@ -153,10 +153,10 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/chat' , methods = ['POST' , 'GET'])
-def chat():
+@app.route('/chat/<int:user_aid>' , methods = ['POST' , 'GET'])
+def chat(user_aid):
    form = ChatForm()
-   messages = Chat.query.all()
+   messages = Chat.query.get_or_404(user_aid)
 
    if form.validate_on_submit():
       chats = Chat(message = form.message.data , author = current_user)
@@ -165,7 +165,7 @@ def chat():
       return redirect(url_for('chat'))
    
 
-   return render_template('chat.html' , form = form , messages = messages)
+   return render_template('chat.html' , form = form , message = messages.message, messages = messages)
 
 
 

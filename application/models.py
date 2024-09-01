@@ -58,7 +58,7 @@ class Shoutouts(db.Model , UserMixin):
 class Chat(db.Model , UserMixin):
       id = db.Column(db.Integer , primary_key = True)
       message = db.Column(db.String() ,default = 'None' , nullable = True )
-      createdAt = db.Column(db.DateTime(timezone=True) , server_default=func.now())
+      createdAt = db.Column(db.DateTime(timezone=True) , default=func.now())
       user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = True)
       
 

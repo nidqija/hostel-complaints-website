@@ -109,11 +109,21 @@
                 <div class="card container mb-5">
                   <div class="card-content">
                    <div class="container">
+                    {% if message.user_id == current_user %}
+                    <h1 class="mb-5"><a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
+                    <h1>{{ message.message }}</h1>
+
+                    {% else %}
+
                     <h1 class="mb-5">{{ message.author.username }} <a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
                     <h1>{{ message.message }}</h1>
+                    {% endif %}
+
+
                    </div>
-                  </div>
+                  </div>                  
                 </div>
+
                 {% endfor %}
   
              
