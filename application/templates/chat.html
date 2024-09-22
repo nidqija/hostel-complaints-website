@@ -105,19 +105,29 @@
               {{ form.hidden_tag() }}
 
               <div class="container">
-                {% for message in messages %}
-                <div class="card container mb-5">
-                  <div class="card-content">
+              {% for message in messages %}
+
+                
                    <div class="container">
-                    {% if message.user_id == current_user %}
-                    <h1 class="mb-5"><a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
+
+                    {% if current_user.id == message.user_id %}
+                    <div class="card mb-5">
+                    <div class="card-content">
+                    <h1 class="mb-5">{{ message.author.username }}<a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
                     <h1>{{ message.message }}</h1>
+                    </div>
+                   </div>
 
                     {% else %}
-
-                    <h1 class="mb-5">{{ message.author.username }} <a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
+                    <div class="card mb-5">
+                    <div class="card-content">
+                    <h1 class="mb-5"><a class="is-pulled-right">{{ message.createdAt }}</a> </h1>
                     <h1>{{ message.message }}</h1>
+                     </div>
+                   </div>
+
                     {% endif %}
+                  </div>
 
 
                    </div>
@@ -144,7 +154,7 @@
                         </div>
 
                     {% else %}
-                        {{form.message(class="textarea input" , placeholder='exp : I have a question regarding')}}
+                        {{form.message(class="textarea" , placeholder='exp : I have a question regarding')}}
                     {% endif %}
                   </div>
 

@@ -16,16 +16,16 @@
             </div>
             <div class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" style="font-family: Ubuntu;">Home</a>
+                    <a class="navbar-item" style="font-family: Ubuntu;" href="{{url_for('home')}}">Home</a>
                     <a class="navbar-item p-5" style="font-family: Ubuntu;">Make a complaint</a>
-                    <a class="navbar-item" style="font-family: Ubuntu;">Announcements</a>
-                    <a class="navbar-item p-5">Guidelines</a>
+                    <a class="navbar-item" style="font-family: Ubuntu;" href="{{url_for('promotionsform')}}">Announcements</a>
+                    <a class="navbar-item p-5" href="{{url_for('home')}}">Guidelines</a>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">My Library</a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item">My Complaints</a>
-                            <a class="navbar-item">My Chats</a>
-                            <a class="navbar-item">Profile</a>
+                            <a class="navbar-item" href="{{url_for('mycomplaints')}}">My Complaints</a>
+                            <a class="navbar-item" href="{{url_for('chat')}}">My Chats</a>
+                            <a class="navbar-item" href="{{url_for('profilepage')}}">Profile</a>
                         </div>
                     </div>
                 </div>

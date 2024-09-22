@@ -61,6 +61,13 @@ class Chat(db.Model , UserMixin):
       createdAt = db.Column(db.DateTime(timezone=True) , default=func.now())
       user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = True)
       
+      
+class HostelChat(db.Model , UserMixin):
+      id = db.Column(db.Integer , primary_key = True)
+      message = db.Column(db.String() , default = 'None' , nullable = True )
+      createdAt = db.Column(db.DateTime(timezone = True) , default = func.now())
+      user_id = db.Column(db.Integer , db.ForeignKey('user.id') , nullable = True)
+
 
 
 
